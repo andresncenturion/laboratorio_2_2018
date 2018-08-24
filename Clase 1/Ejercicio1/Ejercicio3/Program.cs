@@ -13,21 +13,25 @@ namespace Ejercicio3
             int var = 0;
             int i;
             int j;
-            int par = -1;
+            int cont = 0;
           
             Console.Write("Ingrese un numero: ");
             var = int.Parse(Console.ReadLine());
 
-            for (i = 1; i < var; i++)
+            for (i = 1; i <= var; i++)
             {
                 for (j = 1 ; j <= var; j++)
                 {                    
-                    par = i % j;
-                    if (par == 0)
+                    if (i % j == 0)
                     {
-                        Console.WriteLine(j);   
+                        cont++;
+                        Console.WriteLine(j);
                     }
-                }
+                    if (cont == 3)
+                    {
+                        break;
+                    }
+                }                
             }       
             Console.ReadKey();
         }
