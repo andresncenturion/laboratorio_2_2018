@@ -24,14 +24,29 @@ namespace Ejercicio11
             float prom = -1;
 
             for (int i = 0; i < length; i++)
-            {
-                Console.Write("Ingrese un numero: ");
-                if (int.TryParse(Console.ReadLine(), out int conversion))
+            {                
+                do
                 {
-                    valor = conversion;
-                }
-                valido = Validacion.Validar(valor, min, max);
-
+                    Console.Write("Ingrese un numero entero entre -100 y 100: ");
+                    if (int.TryParse(Console.ReadLine(), out int conversion))
+                    {
+                        valor = conversion;
+                        valido = Validacion.Validar(valor, min, max);
+                        if (!valido)
+                        {
+                            Console.WriteLine("El dato ingresado no es valido. Intente nuevamente");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Numero ingresado.");
+                        }
+                    }
+                    else
+                    {
+                        valido = false;
+                        Console.WriteLine("El dato ingresado no es valido. Intente nuevamente");
+                    }
+                } while (!valido);                               
                 if (valido)
                 {
                     cont++;

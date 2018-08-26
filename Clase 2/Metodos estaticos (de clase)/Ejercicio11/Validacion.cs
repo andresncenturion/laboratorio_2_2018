@@ -12,7 +12,7 @@ namespace Ejercicio11
         {
             bool retorno = false;                
                         
-            if (valor > min && valor < max)
+            if (valor >= min && valor <= max)
             {
                 retorno = true;
             }            
