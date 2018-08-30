@@ -16,39 +16,41 @@ namespace Ejercicio16
         public int legajo;
         public string nombre;
 
-        public void CalcularFinal ()
+        public void CalcularFinal()
         {
             this._notaFinal = -1;
             Random numero = new Random();
 
-            if (this._nota1 >= 4 & this._nota2 >= 4)
+            if (this._nota1 >= 4 && this._nota2 >= 4)
             {
-                this._notaFinal = numero.Next();
+                this._notaFinal = numero.Next(4, 10);
             }
         }
 
-        public void Estudiar (byte NotaUno, byte NotaDos)
+        public void Estudiar(byte NotaUno, byte NotaDos)
         {
             this._nota1 = NotaUno;
             this._nota2 = NotaDos;
         }
 
-        public string Mostrar ()
+        public string Mostrar()
         {
-            if(this._notaFinal != -1)
+            StringBuilder mensaje = new StringBuilder("Nota final: ");
+
+            if (this._notaFinal != -1)
             {
-                Console.WriteLine ("Nota final: "+_notaFinal)
+                mensaje.Append(this._notaFinal);
             }
+            else
+            {
+                mensaje.Append("Alumno desaprobado");
+            }            
+            return mensaje.ToString();
         }
 
-        public Alumno(byte nota1, byte nota2, float notaFinal, string apellido, int legajo, string nombre)
+        public Alumno()
         {
-            _nota1 = nota1;
-            _nota2 = nota2;
-            _notaFinal = notaFinal;
-            this.apellido = apellido;
-            this.legajo = legajo;
-            this.nombre = nombre;
+           
         }
     }
 }
