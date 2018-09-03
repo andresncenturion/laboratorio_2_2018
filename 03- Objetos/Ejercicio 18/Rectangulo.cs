@@ -10,10 +10,10 @@ namespace Geometria
     {        
         private float area;
         private float perimetro;
-        Punto vertice1;
-        Punto vertice2;
-        Punto vertice3;
-        Punto vertice4;
+        private Punto vertice1;
+        private Punto vertice2;
+        private Punto vertice3;
+        private Punto vertice4;
 
         public Rectangulo(Punto vertice1, Punto vertice3)
         {
@@ -26,14 +26,10 @@ namespace Geometria
 
         public float Area()
         {
-            float area;
-            float baseRectangulo;
-            float altura;
-
-            baseRectangulo = Math.Abs();
-            altura = Math.Abs();
-            area = baseRectangulo * altura / 2;
+            float area;            
             
+            Math.Abs()
+
             return area;
         }
 
