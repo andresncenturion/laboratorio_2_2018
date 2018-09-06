@@ -13,7 +13,7 @@ namespace Ejercicio_5
 
         private Estante(int capacidad)
         {
-            productos = new Producto[capacidad];
+            this.productos = new Producto[capacidad];
         }
 
         public Estante(int capacidad, int ubicacion):this(capacidad)
@@ -28,15 +28,15 @@ namespace Ejercicio_5
 
         public static string MostrarEstante(Estante e)
         {
-            StringBuilder retorno = null;
+            StringBuilder retorno = new StringBuilder();
             string retornoString;
 
-            retorno.Append("Ubicacion estante: ");
-            retorno.Append(e.ubicacionEstante);
-
-            for (int i = 0; i < e.productos.Length ; i++)
+            retorno.AppendLine("Ubicacion estante: " + e.ubicacionEstante);
+            retorno.AppendLine("Capacidad: " + e.productos.Length);
+            retorno.AppendLine("Productos: ");
+            foreach (Producto p in e.productos)
             {
-                retorno.Append(Producto.MostrarProducto(e.productos[i]));
+                retorno.Append(Producto.MostrarProducto(p));
             }
             
             retornoString = retorno.ToString();
@@ -48,12 +48,14 @@ namespace Ejercicio_5
         {
             bool retorno = false;
 
-            for (int i = 0; i < e.productos.Length; i++)
+            for (int i = 0 ; i < e.productos.Length; i++)
             {
-                if (p == e.productos[i])
+                if (!object.ReferenceEquals(e.productos[i], null))
                 {
-                    retorno = true;
-                    break;
+                    if (p == e.productos[i])
+                    {
+                        retorno = true;
+                    }
                 }
             }
             return retorno;
@@ -69,44 +71,35 @@ namespace Ejercicio_5
             bool retorno = false;
             int flag = 0;
 
-            for (int i = 0; i < e.productos.Length; i++)
-            {                
-                if (e.productos[i] is null)
+            if (e != p)
+            {
+                for (int i = 0; i < e.productos.Length; i++)
                 {
-                    for (int j = 0; j < e.productos.Length; j++)
-                    {
-                        if (e.productos[j] == p)
-                        {
-                            flag = 1;
-                        }
-                    }
-                    if (flag != 1)
+                    if (object.ReferenceEquals(e.productos[i], null))
                     {
                         e.productos[i] = p;
+                        retorno = true;
                         break;
                     }
                 }
-            }            
+            }
             return retorno;
         }
 
         public static Estante operator - (Estante e, Producto p)
         {
-            Estante auxiliar = null;
-
-            if (e == p)
+            for (int i = 0; i < e.productos.Length; i++)
             {
-                for (int i = 0; i < e.productos.Length; i++)
+                if(!object.ReferenceEquals(e.productos[i], null))
                 {
-                    auxiliar.productos[i] = e.productos[i];
-                    auxiliar.ubicacionEstante = e.ubicacionEstante;
-                    if (e.productos[i] == p)
+                    if (p == e.productos[i])
                     {
-                        e.productos[i] = null;                        
+                        e.productos[i] = null;
+                        break;
                     }
                 }
             }
-            return auxiliar;
+            return e;
         }
 
     }

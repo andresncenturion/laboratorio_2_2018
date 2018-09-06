@@ -24,15 +24,12 @@ namespace Ejercicio_5
 
         public static string MostrarProducto(Producto p)
         {
-            StringBuilder retorno = null;
+            StringBuilder retorno = new StringBuilder();
             string retornoString;
 
-            retorno.Append("Codigo de barras: ");
-            retorno.Append(p.codigoDeBarra);
-            retorno.Append("Marca: ");
-            retorno.Append(p.GetMarca());
-            retorno.Append("Precio: ");
-            retorno.Append(p.GetPrecio());
+            retorno.AppendLine("Codigo de barras: " + p.codigoDeBarra);
+            retorno.Append("Marca: " + p.marca);
+            retorno.Append("Precio: " + p.precio);
 
             retornoString = retorno.ToString();
 
@@ -55,7 +52,7 @@ namespace Ejercicio_5
         {
             bool retorno = false;
 
-            if (p.GetMarca().Equals(marca))
+            if (p.marca == marca)
             {
                 retorno = true;
             }
@@ -71,15 +68,9 @@ namespace Ejercicio_5
         {
             bool retorno = false;
 
-            string codigo1 = (string)p1;
-            string codigo2 = (string)p2;
-            
-            if (p1.GetMarca().Equals(p2.GetMarca()) && p1.codigoDeBarra.Equals(p2.codigoDeBarra))
-            {
-                if(codigo1.Equals(codigo2))
-                {
-                    retorno = true;
-                }                
+            if (p1.marca == p2.marca && p1.codigoDeBarra == p2.codigoDeBarra)
+            {                
+                retorno = true;                            
             }
             return retorno;
         }
