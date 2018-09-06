@@ -40,7 +40,7 @@ namespace Ejercicio_5
         }
 
         public static explicit operator string(Producto p)
-        {
+        {                       
             return p.codigoDeBarra;
         }
 
@@ -55,7 +55,7 @@ namespace Ejercicio_5
         {
             bool retorno = false;
 
-            if (p.GetMarca() == marca)
+            if (p.GetMarca().Equals(marca))
             {
                 retorno = true;
             }
@@ -71,9 +71,15 @@ namespace Ejercicio_5
         {
             bool retorno = false;
 
-            if (p1.GetMarca() == p2.GetMarca() && p1.codigoDeBarra == p2.codigoDeBarra)
+            string codigo1 = (string)p1;
+            string codigo2 = (string)p2;
+            
+            if (p1.GetMarca().Equals(p2.GetMarca()) && p1.codigoDeBarra.Equals(p2.codigoDeBarra))
             {
-                retorno = true;
+                if(codigo1.Equals(codigo2))
+                {
+                    retorno = true;
+                }                
             }
             return retorno;
         }

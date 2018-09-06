@@ -67,10 +67,47 @@ namespace Ejercicio_5
         public static bool operator + (Estante e, Producto p)
         {
             bool retorno = false;
+            int flag = 0;
 
-            if (e.productos[i])
-
+            for (int i = 0; i < e.productos.Length; i++)
+            {                
+                if (e.productos[i] is null)
+                {
+                    for (int j = 0; j < e.productos.Length; j++)
+                    {
+                        if (e.productos[j] == p)
+                        {
+                            flag = 1;
+                        }
+                    }
+                    if (flag != 1)
+                    {
+                        e.productos[i] = p;
+                        break;
+                    }
+                }
+            }            
             return retorno;
         }
+
+        public static Estante operator - (Estante e, Producto p)
+        {
+            Estante auxiliar = null;
+
+            if (e == p)
+            {
+                for (int i = 0; i < e.productos.Length; i++)
+                {
+                    auxiliar.productos[i] = e.productos[i];
+                    auxiliar.ubicacionEstante = e.ubicacionEstante;
+                    if (e.productos[i] == p)
+                    {
+                        e.productos[i] = null;                        
+                    }
+                }
+            }
+            return auxiliar;
+        }
+
     }
 }
