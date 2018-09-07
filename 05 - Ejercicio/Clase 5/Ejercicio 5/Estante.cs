@@ -69,7 +69,6 @@ namespace Ejercicio_5
         public static bool operator + (Estante e, Producto p)
         {
             bool retorno = false;
-            int flag = 0;
 
             if (e != p)
             {
