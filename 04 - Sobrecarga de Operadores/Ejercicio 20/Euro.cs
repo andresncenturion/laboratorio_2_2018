@@ -113,5 +113,33 @@ namespace Ejercicio_20
         {
             return !(e1 == e2);
         }
+
+        public static Euro operator + (Euro e, Dolar d)
+        {
+            Euro resultado = new Euro(e.GetCantidad() + d.GetCantidad() * Dolar.GetCotizacion());
+
+            return resultado;
+        }
+
+        public static Euro operator + (Euro e, Pesos p)
+        {
+            Euro resultado = new Euro(e.GetCantidad() + p.GetCantidad() * Pesos.GetCotizacion());
+
+            return resultado;
+        }
+
+        public static Euro operator -(Euro e, Dolar d)
+        {
+            Euro resultado = new Euro(e.GetCantidad() - d.GetCantidad() * Dolar.GetCotizacion());
+
+            return resultado;
+        }
+
+        public static Euro operator -(Euro e, Pesos p)
+        {
+            Euro resultado = new Euro(e.GetCantidad() - p.GetCantidad() * Pesos.GetCotizacion());
+
+            return resultado;
+        }
     }
 }

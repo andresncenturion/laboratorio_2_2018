@@ -10,6 +10,12 @@ namespace Ejercicio_20
     {
         static void Main(string[] args)
         {
+            Dolar verdes = new Dolar(100);
+            Pesos violetas = new Pesos(1755);
+
+            verdes = verdes + violetas;
+            Console.WriteLine("Total de dolares: " + verdes);
+            Console.ReadKey();
         }
     }
 }

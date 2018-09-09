@@ -113,5 +113,29 @@ namespace Ejercicio_20
         {
             return !(p1 == p2);
         }
+
+        public static Pesos operator + (Pesos p, Dolar d)
+        {
+            Pesos resultado = new Pesos(p.GetCantidad() + d.GetCantidad() * Dolar.GetCotizacion());
+            return resultado;
+        }
+
+        public static Pesos operator +(Pesos p, Euro e)
+        {
+            Pesos resultado = new Pesos(p.GetCantidad() + e.GetCantidad() * Euro.GetCotizacion());
+            return resultado;
+        }
+
+        public static Pesos operator -(Pesos p, Dolar d)
+        {
+            Pesos resultado = new Pesos(p.GetCantidad() - d.GetCantidad() * Dolar.GetCotizacion());
+            return resultado;
+        }
+
+        public static Pesos operator -(Pesos p, Euro e)
+        {
+            Pesos resultado = new Pesos(p.GetCantidad() - e.GetCantidad() * Euro.GetCotizacion());
+            return resultado;
+        }
     }
 }
