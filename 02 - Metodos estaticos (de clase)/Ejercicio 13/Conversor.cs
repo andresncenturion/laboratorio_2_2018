@@ -13,9 +13,10 @@ namespace Ejercicio_13
             string binario = "";
             double resto = -1;
 
-            while (a >= 0)
+            while (a >= 1)
             {
                 resto = a % 2;
+                a /= 2;
                 if (resto == 1)
                 {
                     binario = "1" + binario;
@@ -31,15 +32,15 @@ namespace Ejercicio_13
 
         public static double BinarioDecimal (string b)
         {
-            double retorno = double.MinValue;            
+            double retorno = 0;
+            int j = 7;
 
-            for (int i = b.Length - 1; i >= 0 ; i--)
+            for (int i = 0; i < b.Length ; i++)
             {
-                if (b[i] == '0' || b[i] == '1')
-                {
-                    double.TryParse(b, out retorno);
-                }
+                retorno += double.Parse(b[j].ToString()) * Math.Pow(2, i);
+                j--;
             }
+
             return retorno;
         }
     }
