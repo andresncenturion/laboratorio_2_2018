@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ejercicio_20
+namespace Billete
 {
     class Pesos
     {
@@ -13,17 +13,17 @@ namespace Ejercicio_20
 
         private Pesos()
         {
-            cotizRespectoDolar = 17.55F;
+            Pesos.cotizRespectoDolar = 17.55F;
         }
 
-        public Pesos(double cantidad) : this()
+        public Pesos(double cantidad)
         {
             this.cantidad = cantidad;
         }
 
         public Pesos(double cantidad, float cotizacion) : this(cantidad)
         {
-            cotizRespectoDolar = cotizacion;
+            Pesos.cotizRespectoDolar = cotizacion;
         }
 
         public double GetCantidad()
@@ -33,14 +33,14 @@ namespace Ejercicio_20
 
         public static float GetCotizacion()
         {
-            return cotizRespectoDolar;
+            return Pesos.cotizRespectoDolar;
         }
 
         public static explicit operator Dolar(Pesos p)
         {
             Dolar d;
 
-            d = new Dolar(p.GetCantidad(), Dolar.GetCotizacion());
+            d = new Dolar(p.cantidad / Pesos.GetCotizacion());
 
             return d;
         }
@@ -49,7 +49,7 @@ namespace Ejercicio_20
         {
             Euro e;
 
-            e = new Euro(p.GetCantidad(), Euro.GetCotizacion());
+            e =  (Euro)(Dolar)p;
 
             return e;
         }
@@ -67,7 +67,7 @@ namespace Ejercicio_20
         {
             bool retorno = false;
 
-            if (((Dolar)p).GetCantidad() == d.GetCantidad())
+            if (p == (Pesos)d)
             {
                 retorno = true;
             }
@@ -84,7 +84,7 @@ namespace Ejercicio_20
         {
             bool retorno = false;
 
-            if (((Euro)p).GetCantidad() == e.GetCantidad())
+            if (p == (Pesos)e)
             {
                 retorno = true;
             }
@@ -101,7 +101,7 @@ namespace Ejercicio_20
         {
             bool retorno = false;
 
-            if(p1.GetCantidad() == p2.GetCantidad())
+            if(p1 == p2)
             {
                 retorno = true;
             }
@@ -116,25 +116,25 @@ namespace Ejercicio_20
 
         public static Pesos operator + (Pesos p, Dolar d)
         {
-            Pesos resultado = new Pesos(p.GetCantidad() + d.GetCantidad() * Dolar.GetCotizacion());
+            Pesos resultado = new Pesos(p.cantidad + ((Pesos)d).cantidad);
             return resultado;
         }
 
         public static Pesos operator +(Pesos p, Euro e)
         {
-            Pesos resultado = new Pesos(p.GetCantidad() + e.GetCantidad() * Euro.GetCotizacion());
+            Pesos resultado = new Pesos(p.cantidad + ((Pesos)e).cantidad);
             return resultado;
         }
 
         public static Pesos operator -(Pesos p, Dolar d)
         {
-            Pesos resultado = new Pesos(p.GetCantidad() - d.GetCantidad() * Dolar.GetCotizacion());
+            Pesos resultado = new Pesos(p.cantidad - ((Pesos)d).cantidad);
             return resultado;
         }
 
         public static Pesos operator -(Pesos p, Euro e)
         {
-            Pesos resultado = new Pesos(p.GetCantidad() - e.GetCantidad() * Euro.GetCotizacion());
+            Pesos resultado = new Pesos(p.cantidad - ((Pesos)e).cantidad);
             return resultado;
         }
     }

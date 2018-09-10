@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ejercicio_20
+namespace Billete
 {
     class Euro
     {
@@ -13,17 +13,17 @@ namespace Ejercicio_20
 
         private Euro()
         {
-            cotizRespectoDolar = 0.73303F;
+            Euro.cotizRespectoDolar = 1/1.3642F;
         }
 
-        public Euro(double cantidad) : this()
+        public Euro(double cantidad)
         {
             this.cantidad = cantidad;
         }
 
         public Euro(double cantidad, float cotizacion) : this(cantidad)
         {
-            cotizRespectoDolar = cotizacion;
+            Euro.cotizRespectoDolar = cotizacion;
         }
 
         public double GetCantidad()
@@ -33,41 +33,33 @@ namespace Ejercicio_20
 
         public static float GetCotizacion()
         {
-            return cotizRespectoDolar;
+            return Euro.cotizRespectoDolar;
         }
 
         public static explicit operator Dolar(Euro p)
         {
             Dolar d;
 
-            d = new Dolar(p.GetCantidad(), Dolar.GetCotizacion());
+            d = new Dolar(p.cantidad/Euro.GetCotizacion());
 
             return d;
         }
 
         public static explicit operator Pesos(Euro e)
         {
-            Pesos p;
-
-            p = new Pesos(e.GetCantidad(), Pesos.GetCotizacion());
-
-            return p;
+            return (Pesos)((Dolar)e);
         }
 
         public static implicit operator Euro(double d)
-        {
-            Euro e;
-
-            e = new Euro(d);
-
-            return e;
+        {            
+            return new Euro(d);
         }
 
         public static bool operator == (Euro e, Dolar d)
         {
             bool retorno = false;
 
-            if(((Dolar)e).GetCantidad() == d.GetCantidad())
+            if(e == (Euro)d)
             {
                 retorno = true;
             }
@@ -84,7 +76,7 @@ namespace Ejercicio_20
         {
             bool retorno = false;
 
-            if(((Pesos)e).GetCantidad() == p.GetCantidad())
+            if(e == (Euro)p)
             {
                 retorno = true;
             }
@@ -101,7 +93,7 @@ namespace Ejercicio_20
         {
             bool retorno = false;
 
-            if(e1.GetCantidad() == e2.GetCantidad())
+            if(e1 == e2)
             {
                 retorno = true;
             }
@@ -116,28 +108,28 @@ namespace Ejercicio_20
 
         public static Euro operator + (Euro e, Dolar d)
         {
-            Euro resultado = new Euro(e.GetCantidad() + d.GetCantidad() * Dolar.GetCotizacion());
+            Euro resultado = new Euro(e.cantidad + ((Euro)d).cantidad);
 
             return resultado;
         }
 
         public static Euro operator + (Euro e, Pesos p)
         {
-            Euro resultado = new Euro(e.GetCantidad() + p.GetCantidad() * Pesos.GetCotizacion());
+            Euro resultado = new Euro(e.cantidad + ((Euro)p).cantidad);
 
             return resultado;
         }
 
         public static Euro operator -(Euro e, Dolar d)
         {
-            Euro resultado = new Euro(e.GetCantidad() - d.GetCantidad() * Dolar.GetCotizacion());
+            Euro resultado = new Euro(e.cantidad - ((Euro)d).cantidad);
 
             return resultado;
         }
 
         public static Euro operator -(Euro e, Pesos p)
         {
-            Euro resultado = new Euro(e.GetCantidad() - p.GetCantidad() * Pesos.GetCotizacion());
+            Euro resultado = new Euro(e.cantidad - ((Euro)p).cantidad);
 
             return resultado;
         }
