@@ -44,11 +44,11 @@ namespace CentralitaHerencia
         }
 
         public string Mostrar()
-        {            
+        {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendFormat("Duracion: {0} Destino: {1} Origen: {2}", this.duracion, this.nroDestino, this.nroOrigen);
-            
+
             return sb.ToString();
         }
 
@@ -56,11 +56,11 @@ namespace CentralitaHerencia
         {
             int retorno = 0;
 
-            if(llamada1.duracion > llamada2.duracion)
+            if (llamada1.duracion > llamada2.duracion)
             {
                 retorno = 1;
             }
-            
+
             return retorno;
         }
 
@@ -71,6 +71,4 @@ namespace CentralitaHerencia
             Todas
         }
     }
-
-
 }

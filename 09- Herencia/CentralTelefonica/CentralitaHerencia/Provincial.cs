@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CentralitaHerencia
-{
+{ 
     class Provincial : Llamada
     {
         public enum Franja
@@ -30,7 +30,7 @@ namespace CentralitaHerencia
             float valorLlamada;
             float costoAux;
 
-            switch(franjaHoraria)
+            switch (franjaHoraria)
             {
                 case Franja.Franja_1:
                     costoAux = 0.99F;
@@ -64,7 +64,7 @@ namespace CentralitaHerencia
 
         public Provincial(string origen, Franja miFranja, float duracion, string destino) : this(miFranja, new Llamada(duracion, destino, origen))
         {
-            
+
         }
     }
 }

@@ -68,8 +68,8 @@ namespace CentralitaHerencia
                         break;
                     case Llamada.TipoLlamada.Todas:
                         valorRecaudado = valorTotal;
-                        break;                        
-                }                
+                        break;
+                }
             }
             return valorRecaudado;
         }
@@ -89,7 +89,7 @@ namespace CentralitaHerencia
             StringBuilder sb = new StringBuilder();
 
             sb.AppendFormat("Razon social: {0}  Ganancia total: {1}  Ganancia local: {2} Ganancia provincial: {3}", this.razonSocial, this.GananciasPorTotal, this.GananciasPorLocal, this.GananciasPorProvincia);
-            foreach(Llamada llamada in Llamadas)
+            foreach (Llamada llamada in Llamadas)
             {
                 sb.AppendLine(llamada.Mostrar());
             }
@@ -101,9 +101,9 @@ namespace CentralitaHerencia
             int orden = -1;
             Llamada aux = new Llamada(0, "", "");
 
-            for (int i = 0; i < Llamadas.Count - 1; i++)            
+            for (int i = 0; i < Llamadas.Count - 1; i++)
             {
-                for (int j = 1; j< Llamadas.Count; j++)
+                for (int j = 1; j < Llamadas.Count; j++)
                 {
                     orden = Llamadas[i].OrdenarPorDuracion(Llamadas[i], Llamadas[j]);
                     if (orden == 0)
@@ -112,7 +112,7 @@ namespace CentralitaHerencia
                         Llamadas[i] = Llamadas[j];
                         Llamadas[j] = aux;
                     }
-                }                
+                }
             }
         }
     }

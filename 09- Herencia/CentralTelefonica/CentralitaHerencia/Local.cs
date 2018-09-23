@@ -34,7 +34,7 @@ namespace CentralitaHerencia
 
         public Local(string origen, float duracion, string destino, float costo) : this(new Llamada(duracion, destino, origen), costo)
         {
-            
+
         }
 
         public string Mostrar()
