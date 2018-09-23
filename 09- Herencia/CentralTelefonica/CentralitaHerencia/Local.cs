@@ -39,7 +39,11 @@ namespace CentralitaHerencia
 
         public string Mostrar()
         {
+            StringBuilder sb = new StringBuilder();
 
+            sb.AppendFormat("{0} Costo: {1}", base.Mostrar(), this.costo);
+
+            return sb.ToString();
         }
     }
 }

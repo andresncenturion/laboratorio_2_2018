@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 namespace CentralitaHerencia
 {
     class Program
-    {
+    {        
         static void Main(string[] args)
         {
-        }
+           
+        }        
     }
 }
