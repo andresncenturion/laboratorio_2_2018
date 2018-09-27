@@ -106,13 +106,13 @@ namespace CentralitaHerencia
                 for (int j = 1; j < Llamadas.Count; j++)
                 {
                     orden = Llamadas[i].OrdenarPorDuracion(Llamadas[i], Llamadas[j]);
-                    if (orden == 0)
+                    if (orden == 1)
                     {
                         aux = Llamadas[i];
                         Llamadas[i] = Llamadas[j];
                         Llamadas[j] = aux;
                     }
-                }
+                }                
             }
         }
     }
